@@ -2,9 +2,9 @@ import { GetStaticProps } from 'next';
 import Profile from '@/components/profile';
 import {
   getAllUsers,
-  UserProps,
+  getFirstUser,
   getUserCount,
-  getFirstUser
+  UserProps,
 } from '@/lib/api/user';
 import { defaultMetaProps } from '@/components/layout/meta';
 import clientPromise from '@/lib/mongodb';
@@ -22,12 +22,11 @@ export const getStaticProps: GetStaticProps = async () => {
       // cluster is still provisioning
       return {
         props: {
-          clusterStillProvisioning: true
-        }
+          clusterStillProvisioning: true,
+        },
       };
-    } else {
-      throw new Error(`Connection limit reached. Please try again later.`);
     }
+    throw new Error(`Connection limit reached. Please try again later.`);
   }
 
   const results = await getAllUsers();
@@ -39,8 +38,8 @@ export const getStaticProps: GetStaticProps = async () => {
       meta: defaultMetaProps,
       results,
       totalUsers,
-      user: firstUser
+      user: firstUser,
     },
-    revalidate: 10
+    revalidate: 10,
   };
 };

@@ -9,7 +9,7 @@ import DirectoryResults from './directory-results';
 
 export default function Directory({
   results,
-  totalUsers
+  totalUsers,
 }: {
   results: ResultProps[];
   totalUsers: number;
@@ -20,19 +20,17 @@ export default function Directory({
     debouncedQuery.length > 0 && `api/user?query=${debouncedQuery}`,
     fetcher,
     {
-      keepPreviousData: true
-    }
+      keepPreviousData: true,
+    },
   );
 
   return (
     <aside className="flex-shrink-0 w-full bg-black sm:w-96 h-full overflow-scroll border-r border-gray-800">
       <div className="px-6 pt-6 pb-0 sticky top-0 bg-black z-20">
         <Link href="/">
-          <a>
-            <div className="bg-dark-accent-1 hover:bg-dark-accent-2 transition-all rounded-2xl h-12 w-12 flex justify-center items-center">
-              <DirectoryIcon className="text-white" />
-            </div>
-          </a>
+          <div className="bg-dark-accent-1 hover:bg-dark-accent-2 transition-all rounded-2xl h-12 w-12 flex justify-center items-center">
+            <DirectoryIcon className="text-white" />
+          </div>
         </Link>
         <p className="mt-8 text-2xl text-white font-bold">Directory</p>
         <p className="mt-2 text-sm text-dark-accent-5">
@@ -55,7 +53,7 @@ export default function Directory({
                 className="text-white placeholder:text-dark-accent-3 focus:ring-transparent border-none bg-black focus:border-transparent block w-full pl-10 sm:text-sm rounded-md"
                 placeholder="Search"
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={e => setQuery(e.target.value)}
               />
             </div>
           </div>
@@ -64,8 +62,7 @@ export default function Directory({
       {/* Directory list */}
       <nav
         className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden"
-        aria-label="Directory"
-      >
+        aria-label="Directory">
         {debouncedQuery.length === 0 ? (
           results.map(({ _id: letter, users }) => (
             <div key={letter} className="relative">

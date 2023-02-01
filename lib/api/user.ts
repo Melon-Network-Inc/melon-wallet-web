@@ -51,7 +51,7 @@ export async function getUser(username: string): Promise<UserProps | null> {
   if (results) {
     return {
       ...results,
-      bioMdx: await getMdxSource(results.bio || placeholderBio)
+      bioMdx: await getMdxSource(results?.bio || placeholderBio)
     };
   } else {
     return null;
@@ -69,7 +69,7 @@ export async function getFirstUser(): Promise<UserProps | null> {
   );
   return {
     ...results,
-    bioMdx: await getMdxSource(results.bio || placeholderBio)
+    bioMdx: await getMdxSource(results?.bio || placeholderBio)
   };
 }
 
@@ -123,7 +123,7 @@ export async function searchUser(query: string): Promise<UserProps[]> {
       {
         $search: {
           index: 'name-index',
-          /* 
+          /*
           name-index is a search index as follows:
 
           {

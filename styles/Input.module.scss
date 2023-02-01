@@ -1,0 +1,39 @@
+@use 'common' as *;
+
+.inputControl {
+  position: relative;
+  input {
+    border: 1px solid $txt-color;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 597px;
+    padding: 0 16px;
+    font-size: 16px;
+    outline: none;
+
+    &::placeholder {
+      color: #adadad;
+    }
+  }
+  .secureInput {
+    padding-right: 50px;
+  }
+  .iconStyle {
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    right: 20px;
+    top: 38px;
+    z-index: 999;
+    cursor: pointer;
+  }
+  input {
+    height: 44px;
+  }
+  .errorText {
+    font-size: 16px;
+    font-weight: 700;
+    color: red;
+    margin-top: 4px;
+  }
+}
