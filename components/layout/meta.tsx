@@ -5,7 +5,7 @@ export const defaultMetaProps = {
   description:
     'MongoDB Starter Kit built with Next.js, Vercel, and MongoDB Atlas.',
   ogImage: `https://assets.vercel.com/image/upload/v1654626375/twitter-cards/mongo-integration-starter.png`,
-  ogUrl: 'https://mongodb.vercel.app'
+  ogUrl: 'https://mongodb.vercel.app',
 };
 
 export interface MetaProps {
@@ -18,7 +18,7 @@ export interface MetaProps {
 export default function Meta({ props }: { props: MetaProps }) {
   return (
     <Head>
-      <title>{props.title}</title>
+      {/* <title>{title}</title>
       <link rel="icon" href="/favicon.ico" />
       <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
@@ -27,8 +27,8 @@ export default function Meta({ props }: { props: MetaProps }) {
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-      <meta itemProp="name" content={props.title} />
-      <meta itemProp="description" content={props.description} />
+      <meta itemProp="name" content={title} />
+      <meta itemProp="description" content={description} />
       <meta itemProp="image" content={props.ogImage} />
       <meta name="description" content={props.description} />
       <meta property="og:title" content={props.title} />
@@ -42,7 +42,7 @@ export default function Meta({ props }: { props: MetaProps }) {
       <meta name="twitter:creator" content="@StevenTey" />
       <meta name="twitter:title" content={props.title} />
       <meta name="twitter:description" content={props.description} />
-      <meta name="twitter:image" content={props.ogImage} />
+      <meta name="twitter:image" content={props.ogImage} /> */}
     </Head>
   );
 }
