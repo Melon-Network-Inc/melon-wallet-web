@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import styles from '../../styles/Input.module.scss';
 import clsx from 'clsx';
-import passwordShow from '../../assets/icons/passwordShow.png';
-import passwordHide from '../../assets/icons/passwordHide.png';
+import passwordShow from '../../public/passwordShow.png';
+import passwordHide from '../../public/passwordHide.png';
 import Image from 'next/image';
 import { InputLabel } from '@/components/index';
 
