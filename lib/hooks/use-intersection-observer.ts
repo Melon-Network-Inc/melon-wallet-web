@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import type { RefObject } from 'react';
 
 interface IntersectionObserverArgs extends IntersectionObserverInit {
@@ -14,8 +14,8 @@ export function useIntersectionObserver(
     threshold = 0,
     root = null,
     rootMargin = '0%',
-    freezeOnceVisible = false
-  }: IntersectionObserverArgs
+    freezeOnceVisible = false,
+  }: IntersectionObserverArgs,
 ): IntersectionObserverEntry | undefined {
   const [entry, setEntry] = useState<IntersectionObserverEntry>();
 
@@ -30,7 +30,9 @@ export function useIntersectionObserver(
     /* eslint-disable-next-line no-implicit-coercion -- TODO: Fix ESLint Error (#13355) */
     const hasIOSupport = !!window.IntersectionObserver;
 
-    if (!hasIOSupport || frozen || !node) return;
+    if (!hasIOSupport || frozen || !node) {
+      return;
+    }
 
     const observerParams = { threshold, root, rootMargin };
     const observer = new IntersectionObserver(updateEntry, observerParams);

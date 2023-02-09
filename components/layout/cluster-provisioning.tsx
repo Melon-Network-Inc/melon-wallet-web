@@ -1,4 +1,4 @@
-import { LoadingDots, AlertCircleIcon } from '@/components/icons';
+import { AlertCircleIcon, LoadingDots } from '@/components/icons';
 import { MouseEvent, useState } from 'react';
 
 export default function ClusterProvisioning() {
@@ -36,8 +36,7 @@ export default function ClusterProvisioning() {
           type="button"
           onClick={onClick}
           className="mt-4 text-white text-[13px] font-mono bg-black border border-[#333333] hover:border-white transition-all rounded-md w-full h-[40px] flex items-center justify-center whitespace-nowrap"
-          disabled={isSubmitting}
-        >
+          disabled={isSubmitting}>
           {isSubmitting ? <LoadingDots color="white" /> : 'Seed Database'}
         </button>
 
@@ -46,8 +45,7 @@ export default function ClusterProvisioning() {
             href="https://cloud.mongodb.com/"
             target="_blank"
             rel="noreferrer"
-            className="font-mono text-xs text-gray-400 hover:text-white hover:underline transition-all"
-          >
+            className="font-mono text-xs text-gray-400 hover:text-white hover:underline transition-all">
             Check cluster status
           </a>
         </div>

@@ -1,5 +1,5 @@
 // import clientPromise from '@/lib/mongodb';
-// import { remark } from 'remark';
+import { remark } from 'remark';
 // import remarkMdx from 'remark-mdx';
 // import { serialize } from 'next-mdx-remote/serialize';
 // import type { MDXRemoteSerializeResult } from 'next-mdx-remote';

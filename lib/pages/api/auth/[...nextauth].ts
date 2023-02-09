@@ -1,3 +1,4 @@
+export {};
 // import NextAuth from 'next-auth';
 // import GitHubProvider from 'next-auth/providers/github';
 // import { MongoDBAdapter } from '@next-auth/mongodb-adapter';

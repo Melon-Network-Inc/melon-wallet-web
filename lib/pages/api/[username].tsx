@@ -1,20 +1,21 @@
+export {};
 // import { ParsedUrlQuery } from 'querystring';
 // import { GetStaticProps } from 'next';
 // import { defaultMetaProps } from '@/components/layout/meta';
 // import { getUser, getAllUsers, getUserCount } from '@/lib/api/user';
 // export { default } from '.';
 // import clientPromise from '@/lib/mongodb';
-import Custom404 from './404';
+// import Custom404 from '../../../pages/404';
 // interface Params extends ParsedUrlQuery {
 //   username: string;
 // }
-export default function Random() {
-  return (
-    <div className="h-screen w-full flex justify-center items-center bg-black">
-      <Custom404 />
-    </div>
-  );
-}
+// export default function Random() {
+//   return (
+//     <div className="h-screen w-full flex justify-center items-center bg-black">
+//       <Custom404 />
+//     </div>
+//   );
+// }
 
 // export const getStaticPaths = async () => {
 //   // You should remove this try-catch block once your MongoDB Cluster is fully provisioned

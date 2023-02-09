@@ -1,3 +1,4 @@
+export {};
 // import type { NextApiRequest, NextApiResponse } from 'next';
 // // import { searchUser, updateUser } from 'lib/api/user';
 // import { getSession } from 'next-auth/react';

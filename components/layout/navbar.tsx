@@ -1,4 +1,4 @@
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 import { LoadingDots } from '@/components/icons';
 import Image from 'next/image';

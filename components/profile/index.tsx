@@ -1,4 +1,4 @@
-import { UserProps } from '@/lib/api/user';
+// import { UserProps } from '@/lib/api/user';
 import { getGradient } from '@/lib/gradients';
 import {
   CheckIcon,
@@ -24,7 +24,7 @@ export default function Profile({
   user,
 }: {
   settings?: boolean;
-  user: UserProps;
+  user: any;
 }) {
   const router = useRouter();
   const { data: session } = useSession();
@@ -230,15 +230,6 @@ export default function Profile({
             <XIcon className="h-4 w-4 text-white" />
           </Link>
         </div>
-      ) : session?.username === user.username ? (
-        <Link
-          href={{ query: { settings: true } }}
-          as="/settings"
-          shallow
-          replace
-          scroll={false}>
-          <EditIcon className="h-4 w-4 text-white" />
-        </Link>
       ) : null}
     </div>
   );

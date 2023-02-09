@@ -1,4 +1,5 @@
-// import Link from 'next/link';
+import Link from 'next/link';
+
 // import BlurImage from '../blur-image';
 // import { UserProps } from '@/lib/api/user';
 // import { CheckInCircleIcon } from '@/components/icons';
