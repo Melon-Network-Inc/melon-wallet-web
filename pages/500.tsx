@@ -1,5 +1,5 @@
 import Meta, { defaultMetaProps } from '@/components/layout/meta';
-export { getStaticProps } from '.';
+// export { getStaticProps } from '.';
 
 export default function Custom500() {
   return (
@@ -8,7 +8,7 @@ export default function Custom500() {
         props={{
           ...defaultMetaProps,
           title: '500 | MongoDB Starter Kit',
-          ogUrl: 'https://mongodb.vercel.app/500'
+          ogUrl: 'https://mongodb.vercel.app/500',
         }}
       />
       <h1 className="text-2xl font-light text-white">

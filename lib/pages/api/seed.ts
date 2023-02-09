@@ -6,7 +6,7 @@ async function handler(_req: NextApiRequest, res: NextApiResponse) {
 
   if (message) {
     res.status(500).json({
-      error: { message }
+      error: { message },
     });
   } else {
     await res.revalidate(`/`);

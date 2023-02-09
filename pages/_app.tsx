@@ -2,16 +2,21 @@ import '@/styles/globals.css';
 import { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
 import Layout from '@/components/layout';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 export default function MyApp({
   Component,
-  pageProps: { session, ...pageProps }
+  pageProps: { session, ...pageProps },
 }: AppProps) {
+  const queryClient = new QueryClient();
+
   return (
-    <SessionProvider session={session}>
-      <Layout {...pageProps}>
-        <Component {...pageProps} />
-      </Layout>
-    </SessionProvider>
+    <QueryClientProvider client={queryClient} contextSharing={true}>
+      <SessionProvider session={session}>
+        <Layout {...pageProps}>
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
+    </QueryClientProvider>
   );
 }

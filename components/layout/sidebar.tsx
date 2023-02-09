@@ -9,20 +9,20 @@ import {
   SpeakerphoneIcon,
   UserGroupIcon,
   ViewGridAddIcon,
-  XIcon
+  XIcon,
 } from '@heroicons/react/outline';
-import Directory from './directory';
-import { ResultProps } from '@/lib/api/user';
+// import Directory from './directory';
+// import { ResultProps } from '@/lib/api/user';
 
 export default function Sidebar({
   sidebarOpen,
   setSidebarOpen,
-  results,
-  totalUsers
+  // results,
+  totalUsers,
 }: {
   sidebarOpen: boolean;
   setSidebarOpen: (open: boolean) => void;
-  results: ResultProps[];
+  // results: ResultProps[];
   totalUsers: number;
 }) {
   return (
@@ -30,8 +30,7 @@ export default function Sidebar({
       <Dialog
         as="div"
         className="relative z-40 bg-black lg:hidden"
-        onClose={setSidebarOpen}
-      >
+        onClose={setSidebarOpen}>
         <Transition.Child
           as={Fragment}
           enter="transition-opacity ease-linear duration-300"
@@ -39,8 +38,7 @@ export default function Sidebar({
           enterTo="opacity-100"
           leave="transition-opacity ease-linear duration-300"
           leaveFrom="opacity-100"
-          leaveTo="opacity-0"
-        >
+          leaveTo="opacity-0">
           <div className="fixed inset-0 bg-gray-600 bg-opacity-75" />
         </Transition.Child>
 
@@ -52,8 +50,7 @@ export default function Sidebar({
             enterTo="translate-x-0"
             leave="transition ease-in-out duration-300 transform"
             leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
+            leaveTo="-translate-x-full">
             <Dialog.Panel className="relative flex-1 flex flex-col max-w-sm w-full bg-white focus:outline-none">
               <Transition.Child
                 as={Fragment}
@@ -62,20 +59,17 @@ export default function Sidebar({
                 enterTo="opacity-100"
                 leave="ease-in-out duration-300"
                 leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
+                leaveTo="opacity-0">
                 <div className="absolute top-0 right-0 -mr-12 pt-2">
                   <button
                     type="button"
                     className="ml-1 flex items-center justify-center h-10 w-10 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                    onClick={() => setSidebarOpen(false)}
-                  >
+                    onClick={() => setSidebarOpen(false)}>
                     <span className="sr-only">Close sidebar</span>
                     <XIcon className="h-6 w-6 text-white" aria-hidden="true" />
                   </button>
                 </div>
               </Transition.Child>
-              <Directory results={results} totalUsers={totalUsers} />
             </Dialog.Panel>
           </Transition.Child>
           <div className="flex-shrink-0 w-14" aria-hidden="true">
@@ -93,15 +87,15 @@ const navigation = [
   { name: 'Teams', href: '#', icon: UserGroupIcon, current: false },
   { name: 'Directory', href: '#', icon: SearchCircleIcon, current: true },
   { name: 'Announcements', href: '#', icon: SpeakerphoneIcon, current: false },
-  { name: 'Office Map', href: '#', icon: MapIcon, current: false }
+  { name: 'Office Map', href: '#', icon: MapIcon, current: false },
 ];
 const secondaryNavigation = [
   { name: 'Apps', href: '#', icon: ViewGridAddIcon },
-  { name: 'Settings', href: '#', icon: CogIcon }
+  { name: 'Settings', href: '#', icon: CogIcon },
 ];
 
 const user = {
   name: 'Tom Cook',
   imageUrl:
-    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
+    'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 };

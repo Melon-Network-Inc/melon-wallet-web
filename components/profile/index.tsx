@@ -1,13 +1,13 @@
-import { UserProps } from '@/lib/api/user';
+// import { UserProps } from '@/lib/api/user';
 import { getGradient } from '@/lib/gradients';
 import {
-  CheckInCircleIcon,
   CheckIcon,
+  CheckInCircleIcon,
   EditIcon,
   GitHubIcon,
   LoadingDots,
   UploadIcon,
-  XIcon
+  XIcon,
 } from '@/components/icons';
 import { useSession } from 'next-auth/react';
 import BlurImage from '../blur-image';
@@ -21,10 +21,10 @@ export const profileWidth = 'max-w-5xl mx-auto px-4 sm:px-6 lg:px-8';
 
 export default function Profile({
   settings,
-  user
+  user,
 }: {
   settings?: boolean;
-  user: UserProps;
+  user: any;
 }) {
   const router = useRouter();
   const { data: session } = useSession();
@@ -33,7 +33,7 @@ export default function Profile({
     username: user.username,
     image: user.image,
     bio: user.bio || '',
-    bioMdx: user.bioMdx
+    bioMdx: user.bioMdx,
   });
 
   if (data.username !== user.username) {
@@ -46,7 +46,9 @@ export default function Profile({
     (router.query.settings === 'true' && router.asPath === '/settings');
 
   const handleDismiss = useCallback(() => {
-    if (settingsPage) router.replace(`/${user.username}`);
+    if (settingsPage) {
+      router.replace(`/${user.username}`);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
@@ -57,15 +59,15 @@ export default function Profile({
       const response = await fetch('/api/user', {
         method: 'PUT',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       });
       if (response.ok) {
         const bioMdx = await response.json();
         setData({
           ...data,
-          bioMdx
+          bioMdx,
         }); // optimistically show updated state for bioMdx
         router.replace(`/${user.username}`, undefined, { shallow: true });
       } else if (response.status === 401) {
@@ -101,16 +103,14 @@ export default function Profile({
           ${getGradient(user.username)}`}
         />
         <div
-          className={`${profileWidth} -mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5`}
-        >
+          className={`${profileWidth} -mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5`}>
           <div className="relative group h-24 w-24 rounded-full overflow-hidden sm:h-32 sm:w-32">
             {settingsPage && (
               <button
                 className="absolute bg-gray-800 bg-opacity-50 hover:bg-opacity-70 w-full h-full z-10 transition-all flex items-center justify-center"
                 onClick={() =>
                   alert('Image upload has been disabled for demo purposes.')
-                }
-              >
+                }>
                 <UploadIcon className="h-6 w-6 text-white" />
               </button>
             )}
@@ -136,8 +136,7 @@ export default function Profile({
                   href={`https://github.com/${user.username}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex justify-center px-4 py-2 border border-gray-800 hover:border-white shadow-sm text-sm font-medium rounded-md text-white font-mono bg-black focus:outline-none focus:ring-0 transition-all"
-                >
+                  className="inline-flex justify-center px-4 py-2 border border-gray-800 hover:border-white shadow-sm text-sm font-medium rounded-md text-white font-mono bg-black focus:outline-none focus:ring-0 transition-all">
                   <GitHubIcon className="mr-3 h-5 w-5 text-white" />
                   <span>View GitHub Profile</span>
                 </a>
@@ -148,8 +147,7 @@ export default function Profile({
                   href="https://github.com/vercel/mongodb-starter"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex justify-center px-4 py-2 border border-gray-800 hover:border-white shadow-sm text-sm font-medium rounded-md text-white font-mono bg-black focus:outline-none focus:ring-0 transition-all"
-                >
+                  className="inline-flex justify-center px-4 py-2 border border-gray-800 hover:border-white shadow-sm text-sm font-medium rounded-md text-white font-mono bg-black focus:outline-none focus:ring-0 transition-all">
                   <GitHubIcon className="mr-3 h-5 w-5 text-white" />
                   <span>Demo Account</span>
                 </a>
@@ -164,7 +162,7 @@ export default function Profile({
         <div className="border-b border-gray-800">
           <div className={`${profileWidth} mt-10`}>
             <nav className="-mb-px flex space-x-8" aria-label="Tabs">
-              {tabs.map((tab) => (
+              {tabs.map(tab => (
                 <button
                   key={tab.name}
                   disabled={tab.name !== 'Profile'}
@@ -173,8 +171,7 @@ export default function Profile({
                       ? 'border-white text-white'
                       : 'border-transparent text-gray-400 cursor-not-allowed'
                   }
-                    whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm font-mono`}
-                >
+                    whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm font-mono`}>
                   {tab.name}
                 </button>
               ))}
@@ -190,10 +187,10 @@ export default function Profile({
           <>
             <TextareaAutosize
               name="description"
-              onInput={(e) => {
+              onInput={e => {
                 setData({
                   ...data,
-                  bio: (e.target as HTMLTextAreaElement).value
+                  bio: (e.target as HTMLTextAreaElement).value,
                 });
               }}
               className="mt-1 w-full max-w-2xl px-0 text-sm tracking-wider leading-6 text-white bg-black font-mono border-0 border-b border-gray-800 focus:border-white resize-none focus:outline-none focus:ring-0"
@@ -222,8 +219,7 @@ export default function Profile({
               saving ? 'cursor-not-allowed' : ''
             } rounded-full border border-[#0070F3] hover:border-2 w-12 h-12 flex justify-center items-center transition-all`}
             disabled={saving}
-            onClick={handleSave}
-          >
+            onClick={handleSave}>
             {saving ? (
               <LoadingDots color="white" />
             ) : (
@@ -231,23 +227,9 @@ export default function Profile({
             )}
           </button>
           <Link href={`/${user.username}`} shallow replace scroll={false}>
-            <a className="rounded-full border border-gray-800 hover:border-white w-12 h-12 flex justify-center items-center transition-all">
-              <XIcon className="h-4 w-4 text-white" />
-            </a>
+            <XIcon className="h-4 w-4 text-white" />
           </Link>
         </div>
-      ) : session?.username === user.username ? (
-        <Link
-          href={{ query: { settings: true } }}
-          as="/settings"
-          shallow
-          replace
-          scroll={false}
-        >
-          <a className="fixed bottom-10 right-10 rounded-full border bg-black border-gray-800 hover:border-white w-12 h-12 flex justify-center items-center transition-all">
-            <EditIcon className="h-4 w-4 text-white" />
-          </a>
-        </Link>
       ) : null}
     </div>
   );
@@ -256,5 +238,5 @@ export default function Profile({
 const tabs = [
   { name: 'Profile' },
   { name: 'Work History' },
-  { name: 'Contact' }
+  { name: 'Contact' },
 ];
