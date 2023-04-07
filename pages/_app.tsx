@@ -13,8 +13,8 @@ export default function MyApp({
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
       <SessionProvider session={session}>
-        <Layout {...pageProps}>
-          <Component {...pageProps} />
+      <Layout {...pageProps}>
+        <Component {...pageProps} />
         </Layout>
       </SessionProvider>
     </QueryClientProvider>
