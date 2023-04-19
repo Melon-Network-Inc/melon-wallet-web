@@ -1,4 +1,16 @@
 import { Fragment } from 'react';
+
+
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { useState } from 'react';
+import { LoadingDots } from '@/components/icons';
+import Image from 'next/image';
+import { MenuIcon } from '@heroicons/react/outline';
+
+import { Link, animateScroll as scroll } from "react-scroll";
+
+
+
 import { Dialog, Transition } from '@headlessui/react';
 import {
   CalendarIcon,
@@ -11,6 +23,10 @@ import {
   ViewGridAddIcon,
   XIcon,
 } from '@heroicons/react/outline';
+import { BsDiscord } from 'react-icons/bs';
+import { BsTwitter } from 'react-icons/bs';
+import { useEffect } from 'react';
+import smoothscroll from 'smoothscroll-polyfill'; 
 // import Directory from './directory';
 // import { ResultProps } from '@/lib/api/user';
 
@@ -25,6 +41,39 @@ export default function Sidebar({
   // results: ResultProps[];
   totalUsers: number;
 }) {
+  const { data: session, status } = useSession();
+  const [loading, setLoading] = useState(false);
+
+
+
+
+  
+  function scrollToTarget(targetId) {
+    const target = document.querySelector(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  
+  function MyLink({ href, targetId, children }) {
+    function handleClick(event) {
+      event.preventDefault();
+      scrollToTarget(targetId);
+    }
+  
+    return (
+      <a href={href} onClick={handleClick}>
+        {children}
+      </a>
+    );
+  }
+
+  useEffect(() => {
+    smoothscroll.polyfill();
+  }, []);
+
+
+
   return (
     <Transition.Root show={sidebarOpen} as={Fragment}>
       <Dialog
@@ -52,6 +101,88 @@ export default function Sidebar({
             leaveFrom="translate-x-0"
             leaveTo="-translate-x-full">
             <Dialog.Panel className="relative flex-1 flex flex-col max-w-sm w-full bg-white focus:outline-none">
+             {/* here is the side menu */}
+          <div className='flex flex-col justify-center items-center h-screen text-lg font-semibold'>
+          <div className='flex gap-4 pb-3'>
+          <div className=''><BsDiscord size={30}/></div>
+                <div><BsTwitter size={30}/></div>
+          </div>
+      <div className='pb-2'>
+      <MyLink href="#page1" targetId="#page1">
+        page1
+      </MyLink>
+      </div>
+      <div className='pb-2'>
+      <MyLink href="#page2" targetId="#page2">
+        page2
+      </MyLink>
+      </div>
+     <div className='pb-2'>
+     <MyLink href="#page3" targetId="#page3">
+        page3
+      </MyLink>
+     </div>
+      <div className='pb-2'>
+      <MyLink href="#page4" targetId="#page4">
+        page4
+      </MyLink>
+      </div>
+     <div className='pb-2'>
+     <MyLink href="#page5" targetId="#page5">
+        page5
+      </MyLink>
+     </div>
+      <div className='pb-2'>
+      <MyLink href="#page6" targetId="#page6">
+        page6
+      </MyLink>
+      </div>
+     <div className='pb-2'>
+     <MyLink href="#page7" targetId="#page7">
+        page7
+      </MyLink>
+     </div>
+     <div className='pb-2 mt-4'>
+     <MyLink href="" targetId="#page7">
+     {status !== 'loading' &&
+        (session?.user ? (
+          <Link href={`/username`}>
+            <a className="w-8 h-8 rounded-full overflow-hidden">
+              <Image
+                src={
+                  session.user.image ||
+                  `https://avatar.tobi.sh/${session.user.name}`
+                }
+                alt={session.user.name || 'User'}
+                width={300}
+                height={300}
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQYV2PYsGHDfwAHNAMQumvbogAAAABJRU5ErkJggg=="
+              />
+            </a>
+          </Link>
+        ) : (
+          <button
+            disabled={loading}
+            onClick={() => {
+              setLoading(true);
+              signIn('github', { callbackUrl: `/profile` });
+            }}
+            className={`${
+              loading
+                ? 'bg-gray-200 border-black'
+                : 'text-black pt-1 font-semibold'
+            } w-32 h-11 py-1 text-white hover:text-black border border-black rounded-full text-sm transition-all`}>
+            {loading ? <LoadingDots color="gray" /> : 'Create Wallet'}
+          </button>
+        ))}
+      </MyLink>
+     </div>
+          </div>
+
+
+         
+              
               <Transition.Child
                 as={Fragment}
                 enter="ease-in-out duration-300"

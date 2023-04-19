@@ -1,47 +1,13 @@
 import Image from 'next/image'
-import search from '../images/Search.png'
-import qrCode from '../images/Frame 77.png'
-import dp from '../images/Frame 2452.png'
 import bottomProfile from '../images/My profile (1).png'
 import blurGreen from '../images/Ellipse 60 (2).png'
-import mywallet from '../images/My profile.png'
-import roundGreen from '../images/Ellipse 60.png'
-import multipleProfile from '../images/Frame 21193.png'
 import  mainImage from '../images/Screenshot 2022-12-08 at 01.31 1 (1).png'
-import circle from '../images/Ellipse 61.png'
 import { useEffect } from 'react';
 import smoothscroll from 'smoothscroll-polyfill';
 
 export default function Self() {
 
-  
-function scrollToTarget(targetId) {
-  const target = document.querySelector(targetId);
-  if (target) {
-    target.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-
-function MyLink({ href, targetId, children }) {
-  function handleClick(event) {
-    event.preventDefault();
-    scrollToTarget(targetId);
-  }
-
-  return (
-    <a href={href} onClick={handleClick}>
-      {children}
-    </a>
-  );
-}
-
-useEffect(() => {
-  smoothscroll.polyfill();
-}, []);
-  
   return <> 
- 
   <section className="bg-black" id="my-section" id="page5">
   {/* main container */}
  <div className=" md:flex-row  sm:flex flex-col items-center container max-w-6xl mx-auto overflow-x-hidden">
