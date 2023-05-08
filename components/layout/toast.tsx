@@ -1,6 +1,7 @@
 import { getGradient } from '@/lib/gradients';
 import { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
+import Link from 'next/link';
 
 export default function Toast({ username }: { username?: string }) {
   const [bannerHidden, setBannerHidden] = useState(true);
@@ -26,14 +27,24 @@ export default function Toast({ username }: { username?: string }) {
             Dismiss →
           </button>
         </p>
-        <a
-          className="text-white text-[13px] font-mono bg-black border border-[#333333] hover:border-white transition-all rounded-md w-[220px] h-[40px] flex items-center justify-center whitespace-nowrap"
-          href="www.melonnetwork.io"
-          target="_blank"
-          rel="noreferrer">
-          View More
-        </a>
+        <Button href="/signup">Create Wallet</Button>
       </div>
     </div>
   );
 }
+
+const Button = ({ children, onClick, href }: any) => {
+  const buttonProps = {
+    className:
+      'text-white text-[13px] font-mono bg-black border border-[#333333] hover:border-white transition-all rounded-md w-[220px] h-[40px] flex items-center justify-center whitespace-nowrap',
+    onClick: onClick,
+  };
+
+  return href ? (
+    <Link href={href}>
+      <div {...buttonProps}>{children}</div>
+    </Link>
+  ) : (
+    <button {...buttonProps}>{children}</button>
+  );
+};
