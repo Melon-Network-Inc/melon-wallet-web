@@ -88,7 +88,7 @@ const ResetPassword = () => {
           <p
             className={
               styles.description
-            }>{`Lorem ipsum dolor sit amet consectetur. In ultricies id ipsum maecenas commodo aliquam posuere amet consectetur. `}</p>
+            }>{`Please enter new password to reset your password.`}</p>
           <div className={styles.inputContainer}>
             <Input
               id={'password'}
