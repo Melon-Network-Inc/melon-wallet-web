@@ -7,10 +7,7 @@ import { BsDiscord } from 'react-icons/bs';
 import { BsTwitter } from 'react-icons/bs';
 import { Link, animateScroll as scroll } from "react-scroll";
 import smoothscroll from 'smoothscroll-polyfill';
-import { Element } from 'react-scroll';
 import logo from '../img/logo.png'
-import melon from '../img/m.png'
-import network from '../img/n.png'
 
 export default function Navbar({
   setSidebarOpen,
@@ -46,28 +43,23 @@ export default function Navbar({
 
 
   // after a specific scroll in the navbar color should change
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollY, setScrollY] = useState(0);
+
   useEffect(() => {
-    function handleScroll() {
-      console.log('Scrolling');
-      const position = window.scrollY;
-      console.log('Position:', position);
-      setScrollPosition(position);
-      console.log('State:', scrollPosition);
-    }
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
 
     window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    // Clean up the event listener on unmount
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   return (
     <nav
     className="fixed pr-4 pl-4 bg-green-200 z-10 w-full bg-white right-0 flex items-center justify-between md:justify-end"
       aria-label="Navbar">
-        
      <button
         type="button"
         className="inline-flex md:hidden items-center justify-center rounded-md text-gray-700 hover:text-gray-900 focus:outline-none focus:ring-0"
@@ -153,7 +145,6 @@ export default function Navbar({
       </MyLink>
      </div>
       </div>
-           
 
       </div>
     </nav>
