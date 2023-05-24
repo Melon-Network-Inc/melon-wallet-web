@@ -1,20 +1,23 @@
-import React, { ChangeEvent, useCallback, useState } from 'react';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import styles from '../../styles/ResetPassword.module.scss';
 import { Button, Input } from '@/components/index';
 import { useMutation } from 'react-query';
 import { changePasswordApi } from '../../services/user';
+import { Router, useRouter } from 'next/router';
 
 const ResetPassword = () => {
   const [passwordInfo, setPasswordInfo] = useState({
     password: '',
     confirm_password: '',
   });
+  const router = useRouter();
   const [errorInfo, setErrorInfo] = useState({
     password: '',
     confirm_password: '',
   });
-  const changePasswordMutation = useMutation(changePasswordApi);
 
+  const changePasswordMutation = useMutation(changePasswordApi);
+  useEffect(() => {}, []);
   const onChangePasswordInfo = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const id = event.target.id;
@@ -65,6 +68,7 @@ const ResetPassword = () => {
         changePasswordMutation.mutate(finalPayload, {
           onSuccess: () => {
             alert('Password reset successfully');
+            router.push('/');
           },
           onError: (err: any) => {
             console.error('Error in update password', err);
