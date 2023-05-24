@@ -46,7 +46,7 @@ const ForgetPassword = () => {
           <p
             className={
               styles.description
-            }>{`Lorem ipsum dolor sit amet consectetur. In ultricies id ipsum maecenas commodo aliquam posuere amet consectetur. `}</p>
+            }>{`Please enter your email to receive a link for reset password.`}</p>
           <Input
             id={'email'}
             label={'Email'}
