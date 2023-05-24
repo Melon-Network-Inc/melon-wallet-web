@@ -3,6 +3,7 @@ import { AppProps } from 'next/app';
 import { SessionProvider } from 'next-auth/react';
 import Layout from '@/components/layout';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import '../styles/transistions.css';
 
 export default function MyApp({
   Component,
@@ -14,7 +15,7 @@ export default function MyApp({
     <QueryClientProvider client={queryClient} contextSharing={true}>
       <SessionProvider session={session}>
       <Layout {...pageProps}>
-        <Component {...pageProps} />
+      <Component {...pageProps} />
         </Layout>
       </SessionProvider>
     </QueryClientProvider>

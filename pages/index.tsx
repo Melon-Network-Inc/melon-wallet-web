@@ -3,9 +3,7 @@ import Explore from "./explore";
 import Home from "./home";
 import ScanCode from "./scancode";
 import Naver from "./never";
-import Products from "./Prodcuts";
 import Product from "./product";
-import Nav from "./nav";
 import Single from "./single";
 import Self from "./self";
 import AOS from 'aos';
@@ -15,13 +13,11 @@ export default function Index() {
 
   useEffect(() => {
     AOS.init({
-      startEvent: 'DOMContentLoaded', 
-      initClassName: 'aos-init',
-      animatedClassName: 'aos-animate'
+      duration : 800
     });
-  }, [])
+  }, []);
 
-  return <div className="home bg-white">
+  return <div className="home bg-white overflow-hidden">
    <Home/>
    <ScanCode/>
    <Explore/>

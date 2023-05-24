@@ -7,15 +7,28 @@ import bottomProfile from '../images/My profile (1).png'
 import circle from '../images/Ellipse 61.png'
 import CreateWalletButton from '@/components/CreateWalletButton/createWalletButton'
 import JoinCommunityButton from '@/components/JoinCommunityButton/JoinCommunityButton'
+import React, { useState, useEffect,useRef } from 'react';
+import { useInView } from 'react-intersection-observer';
+
 
 export default function Home() {
 
-
-    return  <div className="" id="page1">
-    {/* main container */}
-   <div className=" lg:flex-row  sm:flex flex-col items-center container max-w-6xl mx-auto pt-12 pb-12 overflow-x-hidden">
-   <div className='flex-1 p-3 item-center'>
+    const [isVisible, setIsVisible] = useState(false);
+    const [ref, inView] = useInView({
+      threshold: 0.1, // Adjust this value as per your requirement
+    });
   
+    // Update the state when the target section becomes visible or hidden
+    useEffect(() => {
+      setIsVisible(inView);
+    }, [inView]);
+
+
+    return  <div ref={ref} className="" id="page1">
+    {/* main container */}
+   <div className=" lg:flex-row  sm:flex flex-col items-center container max-w-6xl mx-auto pt-12 pb-12">
+   <div className={`flex-1 p-3 item-center transform transition-transform duration-1000 ${isVisible ? 'translate-x' : '-translate-x-full'}`}>
+
       {/* text with face icons */}
       <div className='flex items-center pt-44 md:pt-0'>
             <h1 className='text-4xl sm:text-5xl font-bold'>Your</h1><Image className="w-24 pl-2 mt-2" src={faceIcons}/>
@@ -31,7 +44,7 @@ export default function Home() {
           </div>
   </div>
   
-  <div className='lg:min-w-min sm:flex-1 min-w-full ml-9 sm:ml-0'>
+  <div className={`lg:min-w-min sm:flex-1 min-w-full ml-9 sm:ml-0 transform transition-transform duration-1000 ${isVisible ? '-translate-x' : 'translate-x-full'}`}>
   
   <div className="relative h-screen">
   

@@ -17,3 +17,13 @@
     -webkit-mask-image: -webkit-radial-gradient(white, black);
   }
 }
+
+
+
+.direction-ltr {
+  direction: ltr;
+  unicode-bidi: bidi-override;
+}
+
+
+
