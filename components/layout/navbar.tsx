@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { LoadingDots } from '@/components/icons';
 import Image from 'next/image';
 import { MenuIcon } from '@heroicons/react/outline';
-import { BsDiscord } from 'react-icons/bs';
-import { BsTwitter } from 'react-icons/bs';
+//import { BsDiscord } from 'react-icons/bs';
+//import { BsTwitter } from 'react-icons/bs';
 import { Link, animateScroll as scroll } from "react-scroll";
 import smoothscroll from 'smoothscroll-polyfill';
 import logo from '../img/logo.png'
@@ -71,8 +71,8 @@ export default function Navbar({
       <div className='container font-semibold max-w-6xl mx-auto flex justify-between items-center pt-2.5 pb-2.5'>
         <div className='flex items-center justify-center'><Image src={logo} className='w-16'/><h5 className='text-lg font-bold'>Melon</h5><p className='ml-0.5 text-lg text-gray-500'>Network</p></div>
       <div className='flex gap-8 items-center justify-end'>
-      <div className='hidden lg:block'><BsDiscord size={14}/></div>
-      <div className='hidden lg:block'><BsTwitter size={14}/></div>
+      {/* <div className='hidden lg:block'><BsDiscord size={14}/></div> */}
+      {/* <div className='hidden lg:block'><BsTwitter size={14}/></div> */}
       <div className='hidden lg:block'>
       <MyLink className='hidden lg:block'  href="#page1" targetId="#page1">
         Page1
